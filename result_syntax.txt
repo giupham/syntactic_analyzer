@@ -1,0 +1,195 @@
+Token: separator	 Lexeme: $$
+	<RAT20SU> -> $$ <OPT_DEC_LIST> <STATEMENT_LIST> $$
+
+Token: keyword	 Lexeme: integer
+	<OPT_DEC_LIST> -> <DECLARATION_LIST> | <EMPTY>
+	<DECLARATION_LIST> -> <DECLARATION> ; <DECLARATION_LIST_PRIME>
+	<DECLARATION> -> <QUALIFIER> <TT_Identifier>
+	<QUALIFIER> -> integer | boolean
+
+Token: identifier	 Lexeme: i
+
+Token: separator	 Lexeme: ;
+
+Token: keyword	 Lexeme: integer
+	<DECLARATION_LIST_PRIME> -> <DECLARATION_LIST> | <EMPTY>
+	<DECLARATION_LIST> -> <DECLARATION> ; <DECLARATION_LIST_PRIME>
+	<DECLARATION> -> <QUALIFIER> <TT_Identifier>
+	<QUALIFIER> -> integer | boolean
+
+Token: identifier	 Lexeme: max
+
+Token: separator	 Lexeme: ;
+
+Token: keyword	 Lexeme: integer
+	<DECLARATION_LIST_PRIME> -> <DECLARATION_LIST> | <EMPTY>
+	<DECLARATION_LIST> -> <DECLARATION> ; <DECLARATION_LIST_PRIME>
+	<DECLARATION> -> <QUALIFIER> <TT_Identifier>
+	<QUALIFIER> -> integer | boolean
+
+Token: identifier	 Lexeme: sum
+
+Token: separator	 Lexeme: ;
+
+Token: identifier	 Lexeme: sum
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<ASSIGN> -> <TT_Identifier> = <EXPRESSION> ;
+
+Token: operator	 Lexeme: =
+
+Token: integer	 Lexeme: 0
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: ;
+
+Token: identifier	 Lexeme: i
+	<STATEMENT_LIST_PRIME> -> <STATEMENT_LIST> | <EMPTY>
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<ASSIGN> -> <TT_Identifier> = <EXPRESSION> ;
+
+Token: operator	 Lexeme: =
+
+Token: integer	 Lexeme: 1
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: ;
+
+Token: keyword	 Lexeme: get
+	<STATEMENT_LIST_PRIME> -> <STATEMENT_LIST> | <EMPTY>
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<GET> -> get ( <TT_Identifier> ) ;
+
+Token: separator	 Lexeme: (
+
+Token: identifier	 Lexeme: max
+
+Token: separator	 Lexeme: )
+
+Token: separator	 Lexeme: ;
+
+Token: keyword	 Lexeme: while
+	<STATEMENT_LIST_PRIME> -> <STATEMENT_LIST> | <EMPTY>
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<WHILE> -> while ( <CONDITION> ) <STATEMENT>
+
+Token: separator	 Lexeme: (
+
+Token: identifier	 Lexeme: i
+	<CONDITION> -> <EXPRESSION> <RELOP> <EXPRESSION>
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: operator	 Lexeme: <
+	<RELOP> -> == | > | <
+
+Token: identifier	 Lexeme: max
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: )
+
+Token: separator	 Lexeme: {
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<COMPOUND> -> { <STATEMENT> <STATEMENT_LIST_PRIME> }
+
+Token: identifier	 Lexeme: sum
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<ASSIGN> -> <TT_Identifier> = <EXPRESSION> ;
+
+Token: operator	 Lexeme: =
+
+Token: identifier	 Lexeme: sum
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: operator	 Lexeme: +
+	<EXPRESSION_PRIME> -> + <TERM> <EXPRESSION_PRIME> | - <TERM> <EXPRESSION_PRIME> | <EMPTY>
+
+Token: identifier	 Lexeme: i
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: ;
+
+Token: identifier	 Lexeme: i
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<ASSIGN> -> <TT_Identifier> = <EXPRESSION> ;
+
+Token: operator	 Lexeme: =
+
+Token: identifier	 Lexeme: i
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: operator	 Lexeme: +
+	<EXPRESSION_PRIME> -> + <TERM> <EXPRESSION_PRIME> | - <TERM> <EXPRESSION_PRIME> | <EMPTY>
+
+Token: integer	 Lexeme: 1
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: ;
+
+Token: separator	 Lexeme: }
+
+Token: identifier	 Lexeme: sum
+	<STATEMENT_LIST_PRIME> -> <STATEMENT_LIST> | <EMPTY>
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<ASSIGN> -> <TT_Identifier> = <EXPRESSION> ;
+
+Token: operator	 Lexeme: =
+
+Token: identifier	 Lexeme: sum
+	<EXPRESSION> -> <TERM> <EXPRESSION_PRIME>
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: operator	 Lexeme: +
+	<EXPRESSION_PRIME> -> + <TERM> <EXPRESSION_PRIME> | - <TERM> <EXPRESSION_PRIME> | <EMPTY>
+
+Token: identifier	 Lexeme: max
+	<TERM> -> <FACTOR> <TERM_PRIME>
+	<FACTOR> -> - <PRIMARY>  | <PRIMARY>
+	<PRIMARY> -> <TT_Identifier> | <TT_Integer> | ( <FACTOR> <TERM_PRIME> <EXPRESSION_PRIME> ) | true | false
+
+Token: separator	 Lexeme: ;
+
+Token: keyword	 Lexeme: put
+	<STATEMENT_LIST_PRIME> -> <STATEMENT_LIST> | <EMPTY>
+	<STATEMENT_LIST> -> <STATEMENT> <STATEMENT_LIST_PRIME>
+	<STATEMENT> -> <COMPOUND> | <ASSIGN> | <IF> | <GET> | <PUT> | <WHILE>
+	<PUT> -> put ( <TT_Identifier> ) ;
+
+Token: separator	 Lexeme: (
+
+Token: identifier	 Lexeme: sum
+
+Token: separator	 Lexeme: )
+
+Token: separator	 Lexeme: ;
+
+Token: separator	 Lexeme: $$
+
